@@ -1,21 +1,39 @@
 package pinguino;
 
 public class inventario {
-private ArrayList<BolasDeNieve> bolasdenieve;
-private ArrayList<Pescado> pescado;
+public Inventario() {
+        this.dados = 0;
+        this.peces = 0;
+        this.bolasDeNieve = 0;
+    }
 
-	    public Inventario() {
-	        this.equipamiento = new ArrayList<>();
-	    }
+    public void agregarDado() {
+        if (dados < 3) dados++;
+    }
 
-	    public void agregarInventario(Inventario inventario) {
-	        this.inventario.add(equipamiento);
-	    }
+    public void agregarPez() {
+        if (peces < 2) peces++;
+    }
 
-	    public void mostrarInventario() {
-	        System.out.println("Inventario:");
-	        for (Inventario i : inventario) {
-	            System.out.println(i.getNombre() + " - " + i.getTipo());
-	        }
-	}
+    public void agregarBolas(int cantidad) {
+        bolasDeNieve = Math.min(bolasDeNieve + cantidad, 6);
+    }
+
+    public int getDados() {
+        return dados;
+    }
+
+    public int getPeces() {
+        return peces;
+    }
+
+    public int getBolasDeNieve() {
+        return bolasDeNieve;
+    }
+
+    @Override
+    public String toString() {
+        return 
+		"Dados: " + dados + ", Peces: " + peces + ", Bolas de nieve: " + bolasDeNieve;
+    }
 }
