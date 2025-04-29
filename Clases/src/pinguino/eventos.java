@@ -3,14 +3,14 @@ import java.util.Random;
 
 public class eventos {
 	public static void main(String[] args) {
-int evento = random.nextInt(100); // 0-99
+int evento = random.nextInt(100); 
 
         if (evento < 50) {
             if (random.nextBoolean()) {
                 jugador.getInventario().agregarPez();
                 System.out.println(jugador.getNombre() + " ha obtenido un pez.");
             } else {
-                int bolas = random.nextInt(3) + 1; // 1 a 3 bolas
+                int bolas = random.nextInt(3) + 1; 
                 jugador.getInventario().agregarBolas(bolas);
                 System.out.println(jugador.getNombre() + " ha obtenido " + bolas + " bolas de nieve.");
             }
