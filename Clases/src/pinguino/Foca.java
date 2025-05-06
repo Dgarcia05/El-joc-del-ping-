@@ -1,6 +1,6 @@
 package pinguino;
 
-public class foca {
+public class Foca {
     private boolean soborno;
 
     public Foca() {
@@ -16,7 +16,7 @@ public class foca {
     }
 
     // El jugador es aplastado: vuelve al inicio
-    public void aplastarJugador(Pingüino p) {
+    public void aplastarJugador(Jugador p) {
         if (!soborno) {
             p.setPosicion(0);
             System.out.println("¡La foca ha aplastado al pingüino! Regresa al inicio.");
@@ -26,7 +26,7 @@ public class foca {
     }
 
     // El jugador es golpeado: retrocede 3 casillas
-    public void golpearJugador(Pingüino p) {
+    public void golpearJugador(Jugador p) {
         if (!soborno) {
             int nuevaPos = Math.max(0, p.getPosicion() - 3);
             p.setPosicion(nuevaPos);
