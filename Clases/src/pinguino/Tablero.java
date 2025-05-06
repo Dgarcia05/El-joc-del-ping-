@@ -1,15 +1,16 @@
 package pinguino;
 
-public class tablero {
+import java.util.*;
 
-	public static void main(String[] args) {
-		
-	private List<Casilla> casillas;
-	private int totalCasillas;
+public class Tablero {
+    private int totalCasillas;
+    private List<Casilla> casillas;
+    private List<Integer> agujeros; 
 
     public Tablero(int totalCasillas) {
         this.totalCasillas = Math.max(totalCasillas, 50);
         this.casillas = new ArrayList<>();
+        this.agujeros = new ArrayList<>();
         generarTablero();
     }
 
@@ -22,20 +23,36 @@ public class tablero {
         }
 
         for (int i = 0; i < totalCasillas; i++) {
-            TipoCasilla tipo = TipoCasilla.NORMAL;
+            Casilla.Tipo tipo = Casilla.Tipo.NORMAL;
 
             if (usados.contains(i)) {
                 int tipoRand = rand.nextInt(4);
                 switch (tipoRand) {
-                    case 0: tipo = TipoCasilla.OSO; break;
-                    case 1: tipo = TipoCasilla.AGUJERO; break;
-                    case 2: tipo = TipoCasilla.TRINEO; break;
-                    case 3: tipo = TipoCasilla.INTERROGANTE; break;
+                    case 0 -> {
+                        tipo = Casilla.Tipo.AGUJERO;
+                        agujeros.add(i);  
+                    }
+                    case 1 -> tipo = Casilla.Tipo.TRINEO;
+                    case 2 -> tipo = Casilla.Tipo.EVENTO;
+                    case 3 -> tipo = Casilla.Tipo.NORMAL;
                 }
             }
 
             casillas.add(new Casilla(i, tipo));
         }
-	}
+    }
 
+    public Casilla getCasilla(int index) {
+        return casillas.get(index);
+    }
+
+    
+    public int obtenerAgujeroAnterior(int posicionActual) {
+        int anterior = -1;
+        for (int pos : agujeros) {
+            if (pos < posicionActual) anterior = pos;
+            else break;
+        }
+        return anterior;
+    }
 }
