@@ -1,33 +1,48 @@
 package pinguino;
-import java.util.random;
-public class casilla {
-	//Declaramos las variables
-	private static int casilla;
-	private static int casilla agujero;
-	private static int casilla trineo;
-	private static int casilla evento;
-	private static int casilla normal;
-	private static Random rand= New Random;
-	
-	public static void main(String[] args) {
-	// Declaramos el tipo de casilla aguejero
-	public static void casilla ajuguero ()
-		{
-		resultado= casilla aguejero;
-		resultado=Ran.nextInt;
-	}
-//Declaramos el tipo de la casilla trineo
-	public static void casilla trineo
-		{
-		resultado=casilla trineo;
-		resultado=Ran.nextInt;
-	}
-//Declaramos el tipo de casilla normal
-	public static void casilla normal 
-{
-	resultado= casilla normal;
-	resultado= Ran.nextInt;
-	}
-		
-	}
+
+public class Casilla {
+    public enum Tipo { NORMAL, AGUJERO, TRINEO, EVENTO }
+
+    private int posicion;
+    private Tipo tipo;
+
+    public Casilla(int posicion, Tipo tipo) {
+        this.posicion = posicion;
+        this.tipo = tipo;
+    }
+
+    public void activar(Jugador jugador, Juego juego) {
+        switch (tipo) {
+            case AGUJERO -> {
+                int actual = jugador.getPosicion(); // usamos la posición actual
+                int anterior = juego.getTablero().obtenerAgujeroAnterior(actual);
+                if (anterior >= 0) {
+                    jugador.setPosicion(anterior);
+                    System.out.println("¡Caíste en un agujero! Retrocedes al agujero anterior en la casilla " + anterior);
+                } else {
+                    jugador.setPosicion(0);
+                    System.out.println("¡Caíste en el primer agujero! Regresas al inicio.");
+                }
+            }
+            case TRINEO -> {
+                int destino = Math.min(49, jugador.getPosicion() + 3); // destino calculado correctamente
+                jugador.setPosicion(destino);
+                System.out.println("¡Te subiste a un trineo! Avanzas a la casilla " + destino);
+            }
+            case EVENTO -> {
+                System.out.println("¡Evento misterioso! Pero aún no implementado.");
+            }
+            case NORMAL -> {
+                System.out.println("Casilla normal. Nada sucede.");
+            }
+        }
+    }
+
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    public int getPosicion() {
+        return posicion;
+    }
 }
