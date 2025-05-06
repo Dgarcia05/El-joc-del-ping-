@@ -1,7 +1,11 @@
 package pinguino;
 
-public class inventario {
-public Inventario() {
+public class Inventario {
+    private int dados;
+    private int peces;
+    private int bolasDeNieve;
+
+    public Inventario() {
         this.dados = 0;
         this.peces = 0;
         this.bolasDeNieve = 0;
@@ -33,7 +37,6 @@ public Inventario() {
 
     @Override
     public String toString() {
-        return 
-		"Dados: " + dados + ", Peces: " + peces + ", Bolas de nieve: " + bolasDeNieve;
+        return "Dados: " + dados + ", Peces: " + peces + ", Bolas de nieve: " + bolasDeNieve;
     }
 }
