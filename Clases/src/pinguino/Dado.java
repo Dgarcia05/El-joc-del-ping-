@@ -2,7 +2,7 @@ package pinguino;
 
 import java.util.Random;
 
-public class dado {
+public class Dado {
     private static int resultado;
     private static Random rand = new Random();
 
