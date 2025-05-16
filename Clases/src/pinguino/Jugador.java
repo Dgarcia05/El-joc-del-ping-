@@ -30,4 +30,9 @@ public class Jugador {
     public void mostrarInventario() {
         System.out.println("Inventario de " + nombre + ": " + inventario);
     }
+
+	public static Jugador get(int turnoActual) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
