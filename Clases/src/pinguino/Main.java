@@ -1,24 +1,26 @@
 package pinguino;
 
-import java.util.*;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
 
-public class Main {
+public class Main extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pantallaPrincipal.fxml"));
+	    Parent root = loader.load();
+
+	    Scene scene = new Scene(root);
+	    primaryStage.setScene(scene);
+	    primaryStage.setTitle("El Juego del Pingüino");
+	    primaryStage.show();
+	}
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("¿Cuántos jugadores? ");
-        int numJugadores = scanner.nextInt();
-        scanner.nextLine();  
-
-        List<Jugador> jugadores = new ArrayList<>();
-
-        for (int i = 0; i < numJugadores; i++) {
-            System.out.print("Introduce el nombre del jugador " + (i + 1) + ": ");
-            String nombre = scanner.nextLine();
-            jugadores.add(new Jugador(nombre));
-        }
-
-        Juego juego = new Juego(jugadores);
-        juego.iniciar();
+        launch(args);
     }
 }
