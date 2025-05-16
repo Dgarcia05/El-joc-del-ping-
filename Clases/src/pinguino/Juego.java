@@ -56,21 +56,21 @@ public class Juego {
         int tirada = 0;
 
         if (tipoDado.equals("especial")) {
-            // Intentar usar dado rápido primero
+          
             if (jugador.getInventario().getDadosRapidos() > 0) {
-                jugador.getInventario().usarDadoRapido();  // Descontar dado rápido
+                jugador.getInventario().usarDadoRapido(); 
                 System.out.println("Dado rápido!");
                 Dado.DadoRapido();
                 tirada = Dado.getResultado();
             } 
-            // Si no hay dados rápidos, intentar dado lento
+           
             else if (jugador.getInventario().getDadosLentos() > 0) {
-                jugador.getInventario().usarDadoLento();  // Descontar dado lento
+                jugador.getInventario().usarDadoLento();  
                 System.out.println("Dado lento.");
                 Dado.DadoLento();
                 tirada = Dado.getResultado();
             } 
-            // Si no hay dados especiales, tirar dado normal
+            
             else {
                 System.out.println("No tienes dados especiales. Tirando dado normal.");
                 Dado.DadoNormal();
@@ -100,7 +100,7 @@ public class Juego {
             return;
         }
 
-        // Restar una bola de nieve
+       
         lanzador.getInventario().agregarBolas(-1);
 
         System.out.println("¿A quién quieres lanzar la bola de nieve?");
@@ -120,7 +120,7 @@ public class Juego {
         }
 
         Jugador objetivo = jugadores.get(indiceObjetivo);
-        int nuevaPos = objetivo.getPosicion() - 3;  // Ejemplo: retrocede 3 casillas
+        int nuevaPos = objetivo.getPosicion() - 3; 
         if (nuevaPos < 0) nuevaPos = 0;
         objetivo.setPosicion(nuevaPos);
 
