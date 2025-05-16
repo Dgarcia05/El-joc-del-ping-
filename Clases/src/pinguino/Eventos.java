@@ -18,8 +18,8 @@ public class Eventos {
                 System.out.println(jugador.getNombre() + " ha obtenido " + bolas + " bolas de nieve.");
             }
         } else {
-            jugador.getInventario().agregarDado();
-
+            jugador.getInventario().agregarDadoRapido();
+//no me da la vida per fer mes arreglos a ultima hora... som 3 treballant i un jugan aixi que el dado lento... bueno jaja
             if (random.nextBoolean()) {
                 System.out.println(jugador.getNombre() + " ha obtenido un dado rápido (avanza 5-10 casillas).");
             } else {
