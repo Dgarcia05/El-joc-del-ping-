@@ -1,18 +1,24 @@
 package pinguino;
 
 public class Inventario {
-    private int dados;
+    private int dadosRapidos;
+    private int dadosLentos;
     private int peces;
     private int bolasDeNieve;
 
     public Inventario() {
-        this.dados = 0;
+        this.dadosRapidos = 0;
+        this.dadosLentos = 0;
         this.peces = 0;
         this.bolasDeNieve = 0;
     }
 
-    public void agregarDado() {
-        if (dados < 3) dados++;
+    public void agregarDadoRapido() {
+        if (dadosRapidos < 3) dadosRapidos++;
+    }
+
+    public void agregarDadoLento() {
+        if (dadosLentos < 3) dadosLentos++;
     }
 
     public void agregarPez() {
@@ -20,11 +26,15 @@ public class Inventario {
     }
 
     public void agregarBolas(int cantidad) {
-        bolasDeNieve = Math.min(bolasDeNieve + cantidad, 6);
+        bolasDeNieve = Math.max(0, Math.min(bolasDeNieve + cantidad, 6));
     }
 
-    public int getDados() {
-        return dados;
+    public int getDadosRapidos() {
+        return dadosRapidos;
+    }
+
+    public int getDadosLentos() {
+        return dadosLentos;
     }
 
     public int getPeces() {
@@ -35,8 +45,34 @@ public class Inventario {
         return bolasDeNieve;
     }
 
+    public void setDadosRapidos(int cantidad) {
+        this.dadosRapidos = Math.max(0, Math.min(cantidad, 3));
+    }
+    
+    public void setDadosLentos(int cantidad) {
+        this.dadosLentos = Math.max(0, Math.min(cantidad, 3));
+    }
+
+   
+    public boolean usarDadoRapido() {
+        if (dadosRapidos > 0) {
+            dadosRapidos--;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean usarDadoLento() {
+        if (dadosLentos > 0) {
+            dadosLentos--;
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
-        return "Dados: " + dados + ", Peces: " + peces + ", Bolas de nieve: " + bolasDeNieve;
+        return "Dados rápidos: " + dadosRapidos + ", Dados lentos: " + dadosLentos +
+               ", Peces: " + peces + ", Bolas de nieve: " + bolasDeNieve;
     }
 }
