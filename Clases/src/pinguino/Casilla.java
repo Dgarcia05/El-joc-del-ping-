@@ -14,7 +14,7 @@ public class Casilla {
     public void activar(Jugador jugador, Juego juego) {
         switch (tipo) {
             case AGUJERO -> {
-                int actual = jugador.getPosicion(); // usamos la posición actual
+                int actual = jugador.getPosicion();
                 int anterior = juego.getTablero().obtenerAgujeroAnterior(actual);
                 if (anterior >= 0) {
                     jugador.setPosicion(anterior);
@@ -25,18 +25,20 @@ public class Casilla {
                 }
             }
             case TRINEO -> {
-                int destino = Math.min(49, jugador.getPosicion() + 3); // destino calculado correctamente
+                int destino = Math.min(49, jugador.getPosicion() + 3);
                 jugador.setPosicion(destino);
                 System.out.println("¡Te subiste a un trineo! Avanzas a la casilla " + destino);
             }
             case EVENTO -> {
-                System.out.println("¡Evento misterioso! Pero aún no implementado.");
+                System.out.println("¡Evento misterioso!");
+                Eventos.generarEvento(jugador);
             }
             case NORMAL -> {
                 System.out.println("Casilla normal. Nada sucede.");
             }
         }
     }
+
 
     public Tipo getTipo() {
         return tipo;
